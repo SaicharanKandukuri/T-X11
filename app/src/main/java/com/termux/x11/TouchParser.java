@@ -104,8 +104,8 @@ public class TouchParser {
 
     private boolean mIsLongpressEnabled;
 
-    private View target;
-    private Point cursor;
+    private final View target;
+    private final Point cursor;
     private int mMode = TOUCH_MODE_DIRECT;
 
     private boolean mInDrag = false;

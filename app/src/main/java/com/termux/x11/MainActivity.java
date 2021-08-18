@@ -4,9 +4,8 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
-import android.preference.PreferenceManager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.PointerIcon;
 import android.view.SurfaceView;
@@ -14,12 +13,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 import android.widget.FrameLayout;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int[] keys = {
+    private static final int[] keys = {
             KeyEvent.KEYCODE_ESCAPE,
             KeyEvent.KEYCODE_TAB,
             KeyEvent.KEYCODE_CTRL_LEFT,
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     int orientation;
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
         if (newConfig.orientation != orientation && kbd != null && kbd.getVisibility() == View.VISIBLE) {
@@ -129,16 +130,14 @@ public class MainActivity extends AppCompatActivity {
 	    if (kbd.getVisibility() != View.GONE)
                 kbd.setVisibility(View.GONE);
 		frm.setPadding(0,0,0,0);
-	    return;
-	} else {
+    } else {
 	    if (kbd.getVisibility() != View.VISIBLE)
                 kbd.setVisibility(View.VISIBLE);
 		int paddingDp = 35;
 		float density = this.getResources().getDisplayMetrics().density;
 		int paddingPixel = (int)(paddingDp * density);
 		frm.setPadding(0,0,0,paddingPixel);
-	    return;
-	}
+    }
     }
 
 }

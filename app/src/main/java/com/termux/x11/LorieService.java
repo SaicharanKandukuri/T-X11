@@ -98,14 +98,14 @@ public class LorieService extends Service {
         Intent preferencesIntent = new Intent(getApplicationContext(), LoriePreferences.class);
         preferencesIntent.setAction(ACTION_START_PREFERENCES_ACTIVITY);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent;
+        pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         PendingIntent pendingExitIntent = PendingIntent.getService(getApplicationContext(), 0, exitIntent, 0);
         PendingIntent pendingPreferencesIntent = PendingIntent.getActivity(getApplicationContext(), 0, preferencesIntent, 0);
 
         //For creating the Foreground Service
         int priority = Notification.PRIORITY_HIGH;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N)
-                priority = NotificationManager.IMPORTANCE_HIGH;
+        priority = NotificationManager.IMPORTANCE_HIGH;
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? getNotificationChannel(notificationManager) : "";
         Notification notification = new NotificationCompat.Builder(this, channelId)
@@ -122,16 +122,14 @@ public class LorieService extends Service {
                 .build();
         startForeground(1, notification);
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            String packageName = getPackageName();
-            PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-            if (!pm.isIgnoringBatteryOptimizations(packageName)) {
-                Intent whitelist = new Intent();
-                whitelist.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
-                whitelist.setData(Uri.parse("package:" + packageName));
-                whitelist.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(whitelist);
-            }
+        String packageName = getPackageName();
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        if (!pm.isIgnoringBatteryOptimizations(packageName)) {
+            Intent whitelist = new Intent();
+            whitelist.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+            whitelist.setData(Uri.parse("package:" + packageName));
+            whitelist.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(whitelist);
         }
     }
 

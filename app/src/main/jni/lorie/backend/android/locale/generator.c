@@ -122,7 +122,7 @@ void iterate_normal(struct xkb_keymap *xkb_keymap, xkb_keycode_t key, void *data
 	if (!ita || !ita->keymap) return;
 	
 	struct keymap *keymap = ita->keymap;
-	struct xkb_state *xkb_state = NULL;
+	int xkb_state = NULL;
 	char *buf = NULL;
 	xkb_keysym_t ks = 0;
 

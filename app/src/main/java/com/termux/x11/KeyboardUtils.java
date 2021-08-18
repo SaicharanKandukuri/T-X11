@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Based on the following Stackoverflow answer:
@@ -21,10 +22,10 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener
     private final static int MAGIC_NUMBER = 200;
 
     private SoftKeyboardToggleListener mCallback;
-    private View mRootView;
+    private final View mRootView;
     private Boolean prevValue = null;
-    private float mScreenDensity;
-    private static HashMap<SoftKeyboardToggleListener, KeyboardUtils> sListenerMap = new HashMap<>();
+    private final float mScreenDensity;
+    private static final HashMap<SoftKeyboardToggleListener, KeyboardUtils> sListenerMap = new HashMap<>();
 
     public interface SoftKeyboardToggleListener
     {
@@ -69,6 +70,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener
         if(sListenerMap.containsKey(listener))
         {
             KeyboardUtils k = sListenerMap.get(listener);
+            assert k != null;
             k.removeListener();
 
             sListenerMap.remove(listener);
@@ -81,7 +83,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener
     public static void removeAllKeyboardToggleListeners()
     {
         for(SoftKeyboardToggleListener l : sListenerMap.keySet())
-            sListenerMap.get(l).removeListener();
+            Objects.requireNonNull(sListenerMap.get(l)).removeListener();
 
         sListenerMap.clear();
     }

@@ -1,17 +1,17 @@
 package com.termux.x11;
 
 import android.content.SharedPreferences;
-import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.util.Log;
+import android.view.MenuItem;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
-import android.view.MenuItem;
 
 public class LoriePreferences extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 

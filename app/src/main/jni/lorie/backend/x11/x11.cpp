@@ -169,7 +169,7 @@ void LorieBackendX11::get_default_proportions(int32_t* width, int32_t* height) {
 }
 
 void LorieBackendX11::swap_buffers() {
-	//eglSwapBuffers (win.egl_dpy, win.surface);
+	eglSwapBuffers (win.egl_dpy, win.surface);
 	helper.swap();
 }
 
@@ -183,6 +183,10 @@ void LorieBackendX11::get_keymap (int *fd, int *size) {
 	strcpy (map, string);
 	munmap (map, *size);
 	free (string);
+}
+
+int LorieBackendX11::fdListener(int fd, uint32_t mask, void *data) {
+	return 0;
 }
 
 int main(int argc, char *argv[]) {
