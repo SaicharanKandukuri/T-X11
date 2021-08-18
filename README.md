@@ -1,3 +1,5 @@
+Making this app comfy for me!✅
+
 Termux:Wayland
 -------------
 [![Join the chat at https://gitter.im/termux/termux](https://badges.gitter.im/termux/termux.svg)](https://gitter.im/termux/termux)
