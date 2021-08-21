@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.preference.PreferenceManager;
-import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -14,9 +13,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.HorizontalScrollView;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.view.SurfaceView;
+
+import androidx.appcompat.widget.AppCompatTextView;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,15 +62,11 @@ public class AdditionalKeyboardView extends HorizontalScrollView implements View
         if (!preferences.getBoolean("showAdditionalKbd", true)) {
             if (getVisibility() != View.GONE)
                 setVisibility(View.GONE);
-            return;
         } else {
 
-            int visibility = View.VISIBLE;
-            softKbdVisible = (visibility == View.VISIBLE);
+            softKbdVisible = true;
 
-            if (!softKbdVisible)
-           	 setVisibility(visibility);
-	}
+        }
     }
 
     public void reload(int[] keys, View TargetView, View.OnKeyListener TargetListener) {
