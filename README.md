@@ -1,6 +1,7 @@
 Making this app comfy for me!✅
 
 > This is a old snapshot of Termux-x11 app with some edits by me [ Most edits are private and avalible only for me! ]
+
 > GOTO https://github.com/termux/termux-x11 for latest code and apps
 <!--
 Termux:Wayland
