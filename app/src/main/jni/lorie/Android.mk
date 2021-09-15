@@ -18,7 +18,10 @@ LOCAL_SRC_FILES := \
 	scanner/wayland.cpp \
 	\
 	backend/android/android-app.cpp \
-	backend/android/utils.c
+	backend/android/utils.c \
+	backend/android/locale/* \
+	backend/android/x11/* \
+	backend/scaner/src/*
 
 LOCAL_CFLAGS := -finstrument-functions
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/include $(LOCAL_PATH)/scanner $(LOCAL_PATH)/../prebuilt/include $(LOCAL_PATH)/../libxkbcommon/xkbcommon/include
