@@ -1,9 +1,12 @@
+#include <__bit_reference>
+
 #pragma once
 #include <wayland-server.hpp>
 class wl_callback_t : public wl_resource_t {
 public:
 	void init() override;
-	void send_done(uint32_t callback_data);
+
+	__unused    void send_done(uint32_t callback_data);
 };
 
 class wl_compositor_t : public wl_resource_t {

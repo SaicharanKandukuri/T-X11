@@ -1,6 +1,14 @@
 #include "wayland.hpp"
+#include <fcntl.h>
+#include <cstring>
+#include <sys/poll.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-void wl_callback_t::send_done(uint32_t callback_data) {
+using namespace std;
+
+__unused void wl_callback_t::send_done(uint32_t callback_data) {
 	 if (resource == nullptr) return;
 	 wl_callback_send_done(resource, callback_data);
 }
