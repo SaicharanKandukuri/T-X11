@@ -1,5 +1,5 @@
 
-> This is a old snapshot of Termux-x11 app with some edits by me
+> This is a old snapshot of Termux-x11 app
 
 > GOTO https://github.com/termux/termux-x11 for latest code and apps
 <!--
