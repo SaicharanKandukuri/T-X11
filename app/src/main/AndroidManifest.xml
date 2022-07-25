@@ -53,5 +53,5 @@
 	<meta-data android:name="com.samsung.android.multidisplay.keep_process_alive" android:value="true"/>
 	<meta-data android:name="android.allow_multiple_resumed_activities" android:value="true" />
     </application>
-
+    <uses-feature android:glEsVersion="0x00020000"/>
 </manifest>
